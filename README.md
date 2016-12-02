@@ -13,7 +13,7 @@ Detta täcker naturligtvis inte allt utan detta är enbart extra saker som inte 
 1. Dokumentation
 ===================================================================
 
-Alla klasser och där emellan måste dokumenteras noggrant. Svenska/Engelska fungerar bra, och en exempelfil finns som ligger i init-paketet.
+Alla klasser och där emellan måste dokumenteras noggrant. Endast engelsk dokumentation för olika charsets kan förekomma. Inuti init-paketet finns en exempelfil på hur koden ska kommenteras.
 Denna är tagen från laboration16 och kallas för ExampleOfHowToCommentCode. Det är nödvändigt att reglerna följs då man ska kunna generera javadocs av detta.
 Utöver det ska även skapare, deltagare som redigerat såväl som datum av då klassen skapades finnas med längst upp i klassen finnas. 
 
