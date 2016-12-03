@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="LED Array/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/Dropbox/MAH Datateknik/Objektorienterad Programmering/Bibliotek/PaintWindow_GU2_V3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
