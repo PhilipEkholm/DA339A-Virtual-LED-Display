@@ -47,7 +47,6 @@ https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx
 
 - Skapa klasser för en och tvådimensionell array - Se sida 3 i handledningen för uppgiftsbeskrivning!
 - Skapa en testmiljö (se sida 4 för hur denna skall se ut!). Använd moment2 package att skapa denna i!
-- Bygg karaktärer
 
 Se sidan 6 i handledningen. Kolla också sidan 12 i handledningen för en förklaring hur alla karaktärer byggs upp. Vi kommer att bygga enligt alternativ 1 som beskrivs i handledningen.
 Detta görs i moment6 paketet! Karaktärerna ska byggas enligt följande färdiga mönster:
