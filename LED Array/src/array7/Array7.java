@@ -1,5 +1,7 @@
 package array7;
 
+import exceptions.IllegalBitException;
+
 /**
  * 	The Array7 is one of the basic classes needed to make the characters work.
  * 
@@ -49,14 +51,38 @@ public class Array7 {
 	}
 	
 	/**
-	 *	Simple setter for the elements-array
+	 *	Simple setter for the elements-array, will throw IllegalBitException if anything else than 0s or 1s is passed in
 	 *
 	 *	@param pos position to target in array
 	 *	@param value value to set position to
 	 *	@return specific value at position
 	*/
 	
-	public void setElement(int pos, int value){
-		this.elements[pos] = value;
+	public void setElement(int pos, int value) throws IllegalBitException{
+		if(value < 0 || value > 1){
+			throw new IllegalBitException("Illegal value passed in Array7.setElement!");
+		}
+		else{
+			this.elements[pos] = value;
+		}
+	}
+	
+	/**
+	 *	Print the whole array as string
+	 *	@return String as array form 
+	 */
+	
+	public String toString(){
+		String res = "[";
+		
+		for(int i = 0; i < this.elements.length; i++){
+			res += this.elements[i];
+			
+			if(i != this.elements.length - 1){
+				res += ", ";
+			}
+		}
+		
+		return (res + "]");
 	}
 }

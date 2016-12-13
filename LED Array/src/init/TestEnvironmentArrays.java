@@ -3,9 +3,12 @@ package init;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
+
 import javax.swing.*;
 import array7.Array7;
 import array7.Array7x7;
+import characters.Characters;
 
 /**
  * Test environment for Array7 and Array7x7. 
@@ -40,8 +43,11 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 	
 	/**
 	 * Constructs test environment
+	 * @param character to be passed from Characters.getChar()
 	 */
-	public TestEnvironmentArrays() { 
+	public TestEnvironmentArrays(Array7x7 character) {
+		TestEnvironmentArrays.array7x7 = character;
+		
 		fillMainGrid(); //Fill labels with numbers from Array7x7
 		addMainGrid(); //Add a grid of labels to panelCenter
 		rightField(); //Adds content to panelRight		
@@ -194,10 +200,21 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 	
 	/**
 	 * Selected row is transfered to the row's JTextFields.
+	 * 
+	 * 	Philip: Catching NumberFormatException since it's easy
+	 * 	to forget to input a number
 	 */
-	private void readRow() {
-		array7 = array7x7.getRow(Integer.parseInt(inputRowNbr.getText()));
-		int rowNbr = Integer.parseInt(inputRowNbr.getText());
+	private void readRow(){
+		int rowNbr = 0;
+		
+		try{
+			rowNbr = Integer.parseInt(inputRowNbr.getText());
+		}
+		catch(NumberFormatException e){
+			System.out.println(e.toString());
+		}
+		
+		array7 = array7x7.getRow(rowNbr);
 		for(int i=0; i<mainGrid[rowNbr].length; i++) {
 			tfRow[i].setText(array7.getElement(i) + "");
 		}
@@ -213,7 +230,14 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 	 * The numbers in the row's JTextFields are inputed in the selected row.
 	 */
 	private void writeRow() {
-		int rowNbr = Integer.parseInt(inputRowNbr.getText());
+		int rowNbr = 0;
+		
+		try{
+			rowNbr = Integer.parseInt(inputRowNbr.getText());
+		}
+		catch(NumberFormatException e){
+			System.out.println(e.toString());
+		}
 //		for(int i=0; i<mainGrid[rowNbr].length; i++) {
 //			mainGrid[rowNbr][i].setText(tfRow[i].getText());
 //		}
@@ -227,8 +251,15 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 	 * Selected column is transfered to the column's JTextFields.
 	 */
 	private void readColumn() {
-		array7 = array7x7.getCol((Integer.parseInt(inputColumnNbr.getText())));
-		int colNbr = Integer.parseInt(inputColumnNbr.getText());
+		int colNbr = 0;
+		
+		try{
+			colNbr = Integer.parseInt(inputColumnNbr.getText());
+		}
+		catch(NumberFormatException e){
+			System.out.println(e.toString());
+		}
+		array7 = array7x7.getCol(colNbr);
 //		for(int i=0; i<mainGrid[colNbr].length; i++) {
 //			tfColumn[i].setText(mainGrid[i][colNbr].getText());
 //		}	
@@ -244,7 +275,14 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 	 * The numbers in the column's JTextFields are inputed in the selected column.
 	 */
 	private void writeColumn() {
-		int colNbr = Integer.parseInt(inputColumnNbr.getText());
+		int colNbr = 0;
+		
+		try{
+			colNbr = Integer.parseInt(inputColumnNbr.getText());
+		}
+		catch(NumberFormatException e){
+			System.out.println(e.toString());
+		}
 //		for(int i=0; i<mainGrid[colNbr].length; i++) {
 //			mainGrid[i][colNbr].setText(tfColumn[i].getText());
 //		}
@@ -253,31 +291,5 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 			mainGrid[i][colNbr].setText(array7x7.getElement(i, colNbr) + "");
 		}
 		
-	}
-	
-	/**
-	 * An instance of Array7x7 is made.
-	 */
-	private static void setRepresentation() {
-		Random rand = new Random();
-		int[][] representation = new int[7][7];
-		for(int i=0; i<representation.length; i++) {
-			for(int j=0; j<representation[i].length; j++) {
-				representation[i][j] = rand.nextInt(10);
-			}
-		}
-		array7x7 = new Array7x7(representation);
-	}
-	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("Test Environment Arrays");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(true);
-		
-		setRepresentation(); //Instance of Array7x7
-		TestEnvironmentArrays testA = new TestEnvironmentArrays();//Creates test environment
-		frame.add(testA);
-		frame.pack();
-		frame.setVisible(true);
 	}
 }

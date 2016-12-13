@@ -45,7 +45,6 @@ https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx
 3. Att göra lista (kommer tillökas/minska kontinuerligt), arbetar ni med en viss sak skriv upp erat namn intill uppgiften!
 ===================================================================
 - Någon måste sätta sig in klasserna inuti paketet 'java' och 'android'. Detta är en nödvändighet för att kunna gå vidare till moment 4 senare.
-- Någon måste testa klasserna Array7 och Array7x7 utförligt. Testsviten måste också testas utförligt innan man testar att mata in karaktärer i testsviten.
 
 
 Då vi är 7 personer i den här gruppen är ett minimum av en extrauppgift också nödvändig. Ta detta också i hänsyn.
