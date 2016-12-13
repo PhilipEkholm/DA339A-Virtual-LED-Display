@@ -9,6 +9,8 @@ import java.util.Random;
 
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+
+import android.Color;
 /**
  * Created by tsroax on 2014-11-27.
  */

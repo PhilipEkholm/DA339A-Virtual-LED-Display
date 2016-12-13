@@ -1,4 +1,4 @@
-package java;
+package android;
 
 import java.util.Random;
 import java.util.Timer;

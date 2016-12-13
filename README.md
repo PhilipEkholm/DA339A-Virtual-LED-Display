@@ -44,11 +44,8 @@ https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx
 ===================================================================
 3. Att göra lista (kommer tillökas/minska kontinuerligt), arbetar ni med en viss sak skriv upp erat namn intill uppgiften!
 ===================================================================
-
-- En testmiljö för projektet måste byggas omgående. Läs moment 2 för hur den skall byggas. Testmiljön SKA byggas i JFrame! Detta är ett tvåmannajobb med högsta prioritet.
 - Någon måste sätta sig in klasserna inuti paketet 'java'. Detta är en nödvändighet för att kunna gå vidare till moment 4 senare.
 - En person måste leta efter ett program att skriva klassdiagram i, en person max på detta. Kontrollera även att programmet fungerar igenom tidigare projekt!
-- En person måste komplettera med en "dummy"-tidsplanering som ska skickas in till Rolf snarast, detta är också en person som krävs här. 
 
 
 Då vi är 7 personer i den här gruppen är ett minimum av en extrauppgift också nödvändig. Ta detta också i hänsyn.

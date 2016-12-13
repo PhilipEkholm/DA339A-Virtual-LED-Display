@@ -1,4 +1,4 @@
-package moment1;
+package array7;
 
 /**
  * 	The Array7 is one of the basic classes needed to make the characters work.

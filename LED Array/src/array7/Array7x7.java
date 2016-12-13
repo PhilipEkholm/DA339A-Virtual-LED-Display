@@ -1,4 +1,4 @@
-package moment1;
+package array7;
 
 /**
  * 	The Class Array 7x7 is an extended version of the two dimensional

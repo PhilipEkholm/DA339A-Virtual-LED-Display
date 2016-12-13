@@ -1,4 +1,4 @@
-package java;
+package android;
 
 /**
  * The Color class defines methods for creating and converting color ints.

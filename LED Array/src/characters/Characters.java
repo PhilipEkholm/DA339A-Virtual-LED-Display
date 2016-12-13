@@ -1,5 +1,5 @@
-package moment5;
-import moment1.Array7x7;
+package characters;
+import array7.Array7x7;
 
 /**
  * 	The Class Characters keeps track of the mapping of all characters 

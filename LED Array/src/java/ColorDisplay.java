@@ -4,9 +4,9 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import android.Color;
 
 public class ColorDisplay extends JComponent {
     private final int PAGE_SIZE = 7;

@@ -1,13 +1,11 @@
-package moment2;
+package init;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
-import moment1.Array7;
-import moment1.Array7x7;
+import array7.Array7;
+import array7.Array7x7;
 
 /**
  * Test environment for Array7 and Array7x7. 
