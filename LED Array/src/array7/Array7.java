@@ -8,7 +8,25 @@ package array7;
  */
 
 public class Array7 {
-	private int[] elements = new int[7];
+	private int[] elements;
+	
+	/**
+	 *	Constructor to be initialized if a simple array is passed as arg.
+	 *	
+	 *	@param elements to pass to array
+	 */
+	
+	public Array7(int[] elements){
+		this.elements = elements;
+	}
+	
+	/**
+	 * 	Constructor to be initialized if no array is passed.
+	 */
+	
+	public Array7(){
+		this.elements = new int[7];
+	}
 	
 	/**
 	 *	Simple getter for the elements-array
@@ -19,6 +37,15 @@ public class Array7 {
 	
 	public int getElement(int pos){
 		return this.elements[pos];
+	}
+	
+	/**
+	 *	Getter for getting the whole array
+	 *	@return whole array
+	*/
+	
+	public int[] getElements(){
+		return this.elements;
 	}
 	
 	/**

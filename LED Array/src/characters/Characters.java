@@ -296,7 +296,7 @@ public class Characters {
 * 	window to your right in eclipse to navigate efficiently.
 */
 	
-	private static int[][] UNKNOWN = {
+	public static int[][] UNKNOWN = {
 		{0, 0, 0, 0, 1, 0, 0},
 		{0, 0, 0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 1, 0, 0},

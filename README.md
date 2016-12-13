@@ -44,8 +44,8 @@ https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx
 ===================================================================
 3. Att göra lista (kommer tillökas/minska kontinuerligt), arbetar ni med en viss sak skriv upp erat namn intill uppgiften!
 ===================================================================
-- Någon måste sätta sig in klasserna inuti paketet 'java'. Detta är en nödvändighet för att kunna gå vidare till moment 4 senare.
-- En person måste leta efter ett program att skriva klassdiagram i, en person max på detta. Kontrollera även att programmet fungerar igenom tidigare projekt!
+- Någon måste sätta sig in klasserna inuti paketet 'java' och 'android'. Detta är en nödvändighet för att kunna gå vidare till moment 4 senare.
+- Någon måste testa klasserna Array7 och Array7x7 utförligt. Testsviten måste också testas utförligt innan man testar att mata in karaktärer i testsviten.
 
 
 Då vi är 7 personer i den här gruppen är ett minimum av en extrauppgift också nödvändig. Ta detta också i hänsyn.
@@ -55,4 +55,8 @@ Då vi är 7 personer i den här gruppen är ett minimum av en extrauppgift ocks
 4. Intressanta länkar
 ===================================================================
 
+Sidan där alla karaktärer är mappade från. 
 http://www.1001fonts.com/subway-ticker-font.html#character-map
+
+En sida där man kan skapa alla klassdiagram som kommer behövas senare för momentet där man ska lämna in klassdiagram över alltihopa.
+https://www.genmymodel.com/class-diagram-online
