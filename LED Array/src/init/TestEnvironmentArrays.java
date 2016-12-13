@@ -10,7 +10,7 @@ import array7.Array7x7;
 /**
  * Test environment for Array7 and Array7x7. 
  * @author Lucas Borg
- *
+ * @version 1.05
  */
 
 public class TestEnvironmentArrays extends JPanel implements ActionListener {
@@ -196,13 +196,17 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 	 * Selected row is transfered to the row's JTextFields.
 	 */
 	private void readRow() {
+		array7 = array7x7.getRow(Integer.parseInt(inputRowNbr.getText()));
 		int rowNbr = Integer.parseInt(inputRowNbr.getText());
+		for(int i=0; i<mainGrid[rowNbr].length; i++) {
+			tfRow[i].setText(array7.getElement(i) + "");
+		}
 //		for(int i=0; i<mainGrid[rowNbr].length; i++) {
 //			tfRow[i].setText(mainGrid[rowNbr][i].getText());
 //		}
-		for(int i=0; i<mainGrid[rowNbr].length; i++) {
-			tfRow[i].setText(array7x7.getElement(rowNbr, i) +"");
-		}	
+//		for(int i=0; i<mainGrid[rowNbr].length; i++) {
+//			tfRow[i].setText(array7x7.getElement(rowNbr, i) +"");
+//		}	
 	}
 	
 	/**
@@ -223,12 +227,16 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 	 * Selected column is transfered to the column's JTextFields.
 	 */
 	private void readColumn() {
+		array7 = array7x7.getCol((Integer.parseInt(inputColumnNbr.getText())));
 		int colNbr = Integer.parseInt(inputColumnNbr.getText());
 //		for(int i=0; i<mainGrid[colNbr].length; i++) {
 //			tfColumn[i].setText(mainGrid[i][colNbr].getText());
 //		}	
+//		for(int i=0; i<mainGrid[colNbr].length; i++) {
+//			tfColumn[i].setText(array7x7.getElement(i, colNbr) +"");
+//		}
 		for(int i=0; i<mainGrid[colNbr].length; i++) {
-			tfColumn[i].setText(array7x7.getElement(i, colNbr) +"");
+			tfColumn[i].setText(array7.getElement(i) +"");
 		}
 	}
 	
