@@ -1,4 +1,4 @@
-package moment3;
+package init;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,8 +6,9 @@ import java.util.Random;
 
 import javax.swing.*;
 
-import moment1.Array7;
-import moment1.Array7x7;
+import array7.Array7;
+import array7.Array7x7;
+import characters.Characters;
 
 /**
  * Test environment for movement of numbers in Array7x7
