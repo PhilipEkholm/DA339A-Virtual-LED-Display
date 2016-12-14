@@ -25,7 +25,7 @@ public class TestEnvironmentMovement extends JPanel implements ActionListener {
 	private JTextField[] tfRightSide = new JTextField[7];
 	private JButton btnMoveLeft = new JButton("Move Left");
 	private JButton btnMoveRight = new JButton("Move Right");
-	private int labelWidht=30, labelHeigth=30, buttonWidht=50, buttonHeigth=30;
+	private int labelWidht=50, labelHeigth=50, buttonWidht=50, buttonHeigth=30;
 	private Font mono = new Font("MONOSPACED", Font.BOLD, 30);
 	
 	private JPanel panelCenter = new JPanel( new BorderLayout() );
