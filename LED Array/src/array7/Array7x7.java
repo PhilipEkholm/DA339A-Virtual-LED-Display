@@ -138,6 +138,26 @@ public class Array7x7 {
 	}
 	
 	/**
+	 *	Test method shiftLeft
+	 *
+	 * 	Uppgift: Skifta vänster, höger, upp, ner. Fixa en metod som inte returnerar en ny del
+	 */
+	
+	public Array7 shiftLeft(Array7 inputCol){
+		Array7 oldArrayPart = this.getCol(0);
+		
+		for(int i = 0; i < this.representation.length; i++){
+			for(int j = 0; j < this.representation[i].length - 1; j++){
+				this.representation[i][j] = this.representation[i][j +1];
+			}
+		}
+		
+		this.setCol(6, inputCol);
+		
+		return oldArrayPart;
+	}
+	
+	/**
 	 *	Print the whole array as a matrix
 	 *	@return String as matrix
 	 */
