@@ -6,6 +6,7 @@ Välkommen till projektet! Här ligger allt mellan himmel och jord angående det
 1. Hur kod i projektet skall kommenteras
 2. Grundläggande funktionalitet hos Git
 3. Att göra lista på projektet, vad som skall göras mm.
+4. Intressanta länkar och resurser
 
 Detta täcker naturligtvis inte allt utan detta är enbart extra saker som inte direkt finns med i det 14-sidor långa dokument kring hur den här gruppuppgiften går till.
 
@@ -45,14 +46,17 @@ https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx
 3. Att göra lista (kommer tillökas/minska kontinuerligt), arbetar ni med en viss sak skriv upp erat namn intill uppgiften!
 ===================================================================
 - Någon måste sätta sig in klasserna inuti paketet 'java' och 'android'. Detta är en nödvändighet för att kunna gå vidare till moment 4 senare.
-- Skriv kod för att shifta åt höger, upp, och ner. Modifiera Array7x7 för detta och följ exempel från shiftLeft().
+- Skriv kod för att shifta åt höger, upp, och ner. Modifiera Array7x7 för detta och följ exempel från shiftLeft(). Den ska fungera precis som shiftLeft
+bara det att den ska göra det åt olika håll. Kom ihåg att kommentera koden!
+- Hjälpa Lucas med ny testmiljö eventuellt. 
+- Uppdatera ArraySupporter (Philip)
 
 
 Då vi är 7 personer i den här gruppen är ett minimum av en extrauppgift också nödvändig. Ta detta också i hänsyn.
 
 
 ===================================================================
-4. Intressanta länkar
+4. Intressanta länkar & Resurser
 ===================================================================
 
 Sidan där alla karaktärer är mappade från. 
@@ -60,3 +64,7 @@ http://www.1001fonts.com/subway-ticker-font.html#character-map
 
 En sida där man kan skapa alla klassdiagram som kommer behövas senare för momentet där man ska lämna in klassdiagram över alltihopa.
 https://www.genmymodel.com/class-diagram-online
+
+ArraySupporter:
+
+Ett bibliotek för arrayer, ungefär som det vi gjorde på P4, bara det att den innehåller mycket mer funktionalitet som används för det här projektet. 

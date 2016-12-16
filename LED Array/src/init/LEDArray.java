@@ -14,16 +14,15 @@ public class LEDArray {
 		//LEDArray app = new LEDArray();
 		//app.initTestSuite();
 		
-		Array7x7 arr = Characters.getChar('T');
+		Array7x7 arr = Characters.getChar('A');
 		Array7 arr7 = new Array7(new int[] {1, 1, 1, 1, 1, 1, 1});
 		
 		arr.shiftLeft(arr7);
+		arr.shiftLeft(arr7);
 		System.out.println(arr.toString());
-		Array7x7 copy = Characters.getChar('T');
+		Array7x7 copy = Characters.getChar('A');
 		System.out.println(copy.toString());
 	}
-	
-	//Måste åtgärda problem med referens
 	
 	private void initTestSuite(){
 		/*
