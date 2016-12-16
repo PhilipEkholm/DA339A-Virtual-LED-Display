@@ -139,8 +139,6 @@ public class Array7x7 {
 	
 	/**
 	 *	Test method shiftLeft
-	 *
-	 * 	Uppgift: Skifta vänster, höger, upp, ner. Fixa en metod som inte returnerar en ny del
 	 */
 	
 	public Array7 shiftLeft(Array7 inputCol){
@@ -156,6 +154,10 @@ public class Array7x7 {
 		
 		return oldArrayPart;
 	}
+	
+	/**
+	 *	 
+	*/
 	
 	/**
 	 *	Print the whole array as a matrix
