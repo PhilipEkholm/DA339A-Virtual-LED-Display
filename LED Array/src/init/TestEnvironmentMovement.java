@@ -10,22 +10,22 @@ import array7.Array7;
 import array7.Array7x7;
 import characters.Characters;
 
-/**
+**
  * Test environment for movement of numbers in Array7x7
  * @author Lucas Borg
- * @version 0.7
+ * @version 1.0
  */
 public class TestEnvironmentMovement extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
-	private static Array7x7 array7x7;
-	private Array7 array7;
+	private static Array7x7 array7x7; 
+	private static Array7 array7;
 	private JLabel[][] mainGrid = new JLabel[7][7];
 	private JTextField[] tfLeftSide = new JTextField[7];
 	private JTextField[] tfRightSide = new JTextField[7];
 	private JButton btnMoveLeft = new JButton("Move Left");
 	private JButton btnMoveRight = new JButton("Move Right");
-	private int labelWidht=50, labelHeigth=50, buttonWidht=50, buttonHeigth=30;
+	private int labelWidht=30, labelHeigth=30, buttonWidht=50, buttonHeigth=30;
 	private Font mono = new Font("MONOSPACED", Font.BOLD, 30);
 	
 	private JPanel panelCenter = new JPanel( new BorderLayout() );
@@ -41,7 +41,6 @@ public class TestEnvironmentMovement extends JPanel implements ActionListener {
 		addMoveButtons(); //Adds buttons and ActionListeners for the buttons in pnlMoveBtns 
 		
 		setLayout( new BorderLayout() );
-		
 		add(panelCenter, BorderLayout.CENTER);
 		add(panelRightSide, BorderLayout.EAST);
 		add(panelLeftSide, BorderLayout.WEST);
@@ -140,10 +139,11 @@ public class TestEnvironmentMovement extends JPanel implements ActionListener {
 		int[][] representation = new int[7][7];
 		for(int i=0; i<representation.length; i++) {
 			for(int j=0; j<representation[i].length; j++) {
-				representation[i][j] = rand.nextInt(10);
+				representation[i][j] = rand.nextInt(2);
 			}
 		}
 		array7x7 = new Array7x7(representation);
+		array7 = array7x7.getCol(0);//Needs values to use methods
 	}
 	
 	public static void main(String[] args) {
@@ -164,11 +164,38 @@ public class TestEnvironmentMovement extends JPanel implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnMoveLeft) {
-			
+			move("Left");
 		}
-		
 		else if(e.getSource() == btnMoveRight) {
-			
+			move("Right");
+		}
+	}
+	
+	/**
+	 * Moves the numbers in array7x7 in the direction sent. Updates the text on the labels in the grid.
+	 * @param direction
+	 */
+	private void move(String direction) {
+		JTextField[] tfIn = tfLeftSide;//For movement to the right
+		JTextField[] tfOut = tfRightSide;//For movement to the right
+		if(direction == "Left") {
+			tfIn = tfRightSide;
+			tfOut = tfLeftSide;
+		}
+		for(int i=0; i<tfIn.length; i++) {
+			array7.setElement(i, Integer.parseInt(tfIn[i].getText()) );
+		}
+		if(direction == "Left") 
+			array7 = array7x7.shiftLeft(array7);
+		else //direction == "Right"
+			array7 = array7x7.shiftRight(array7);
+		for(int i=0; i<tfOut.length; i++) {
+			tfOut[i].setText(array7.getElement(i) + "");
+		}
+		for(int i=0; i<mainGrid.length; i++) {
+			for(int j=0; j<mainGrid[i].length; j++) {
+				mainGrid[i][j].setText(array7x7.getElement(i, j) + "");
+			}
 		}
 	}
 }
