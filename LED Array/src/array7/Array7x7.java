@@ -1,4 +1,5 @@
 package array7;
+import arrays.ArraySupporter;
 import characters.Characters;
 import exceptions.IllegalBitException;
 
@@ -20,7 +21,7 @@ public class Array7x7 {
 	*/
 	
 	public Array7x7(int[][] character){
-		this.representation = character;
+		this.representation = ArraySupporter.copy2D(character);
 	}
 	
 	/**
@@ -29,7 +30,7 @@ public class Array7x7 {
 	*/
 	
 	public Array7x7(){
-		this.representation = Characters.UNKNOWN;
+		this.representation = ArraySupporter.copy2D(Characters.UNKNOWN);
 	}
 	
 	/**

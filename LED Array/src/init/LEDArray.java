@@ -7,7 +7,6 @@ import array7.Array7x7;
 import arrays.ArraySupporter;
 import characters.Characters;
 import init.TestEnvironmentArrays;
-import characters.Characters;
 
 public class LEDArray {
 	//Note that as little code as possible should be inside the main, the exception is testing.
@@ -16,11 +15,12 @@ public class LEDArray {
 		//app.initTestSuite();
 		
 		Array7x7 arr = Characters.getChar('T');
-		Array7 arr7 = new Array7(new int[] {1, 1, 0, 1, 0, 0, 1});
+		Array7 arr7 = new Array7(new int[] {1, 1, 1, 1, 1, 1, 1});
 		
 		arr.shiftLeft(arr7);
 		System.out.println(arr.toString());
-		//Array7x7 copy = Characters.getChar('B');
+		Array7x7 copy = Characters.getChar('T');
+		System.out.println(copy.toString());
 	}
 	
 	//Måste åtgärda problem med referens

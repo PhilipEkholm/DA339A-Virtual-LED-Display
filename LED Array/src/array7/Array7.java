@@ -1,5 +1,6 @@
 package array7;
 
+import arrays.ArraySupporter;
 import exceptions.IllegalBitException;
 
 /**
@@ -19,7 +20,7 @@ public class Array7 {
 	 */
 	
 	public Array7(int[] elements){
-		this.elements = elements;
+		this.elements = ArraySupporter.copy(elements);
 	}
 	
 	/**
