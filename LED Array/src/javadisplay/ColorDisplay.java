@@ -1,4 +1,4 @@
-package java;
+package javadisplay;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -194,7 +194,7 @@ public class ColorDisplay extends JComponent {
 //		d.setDisplay(arr,2,1); // arr har röd-värde i samtliga element
 //		d.updateDisplay();
 //
-//		JOptionPane.showMessageDialog(null,d);
-		JOptionPane.showMessageDialog(null, new ColorDisplay(Color.RED,Color.WHITE));
+		//JOptionPane.showMessageDialog(null,d);
+		JOptionPane.showMessageDialog(null, new ColorDisplay(Color.MAGENTA,Color.WHITE));
 	}
 }

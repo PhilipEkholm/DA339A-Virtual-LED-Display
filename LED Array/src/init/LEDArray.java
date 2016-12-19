@@ -1,5 +1,8 @@
 package init;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.JFrame;
 
 import array7.Array7;
@@ -13,7 +16,8 @@ public class LEDArray {
 	//Note that as little code as possible should be inside the main, the exception is testing.
 	public static void main(String[] args) {
 		LEDArray app = new LEDArray();
-		app.shiftTestSuite();
+		//app.shiftTestSuite();
+		app.testTimer();
 	}
 	
 	private void initTestSuite(){
@@ -42,5 +46,17 @@ public class LEDArray {
 		frame.add(testA);
 		frame.pack();
 		frame.setVisible(true);
+	}
+	
+	private void testTimer(){
+		Timer timer = new Timer();
+		
+		timer.scheduleAtFixedRate(new TimerTask(){
+
+			@Override
+			public void run() {
+				System.out.println("Hej");
+			}
+		}, 1, 500);
 	}
 }

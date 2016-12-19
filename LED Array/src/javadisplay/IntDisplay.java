@@ -1,4 +1,4 @@
-package java;
+package javadisplay;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
