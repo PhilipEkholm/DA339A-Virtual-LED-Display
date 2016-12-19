@@ -10,16 +10,17 @@ import array7.Array7;
 import array7.Array7x7;
 import characters.Characters;
 
-**
+/**
  * Test environment for movement of numbers in Array7x7
  * @author Lucas Borg
  * @version 1.0
  */
+
 public class TestEnvironmentMovement extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
 	private static Array7x7 array7x7; 
-	private static Array7 array7;
+	private static Array7 array7 = new Array7();
 	private JLabel[][] mainGrid = new JLabel[7][7];
 	private JTextField[] tfLeftSide = new JTextField[7];
 	private JTextField[] tfRightSide = new JTextField[7];
@@ -34,6 +35,8 @@ public class TestEnvironmentMovement extends JPanel implements ActionListener {
 	private JPanel pnlMoveBtns = new JPanel( new GridLayout(1,2));
 
 	public TestEnvironmentMovement(Array7x7 character) {
+		array7x7 = character;
+		
 		fillMainGrid(); //Fill labels with numbers from Array7x7
 		addMainGrid(); //Add a grid of labels in panelCenter
 		textFieldsWest(); //Adds JTextFields in panelLeftSide
@@ -133,30 +136,6 @@ public class TestEnvironmentMovement extends JPanel implements ActionListener {
 		pnlMoveBtns.add(btnMoveLeft);
 		pnlMoveBtns.add(btnMoveRight);
 	}
-	
-	private static void setRepresentation() {
-		Random rand = new Random();
-		int[][] representation = new int[7][7];
-		for(int i=0; i<representation.length; i++) {
-			for(int j=0; j<representation[i].length; j++) {
-				representation[i][j] = rand.nextInt(2);
-			}
-		}
-		array7x7 = new Array7x7(representation);
-		array7 = array7x7.getCol(0);//Needs values to use methods
-	}
-	
-	public static void main(String[] args) {
-		JFrame frame = new JFrame("Test Environment Arrays");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(true);
-		
-		setRepresentation(); //Instance of Array7x7
-		TestEnvironmentMovement testA = new TestEnvironmentMovement(array7x7);//Creates test environment
-		frame.add(testA);
-		frame.pack();
-		frame.setVisible(true);
-	}
 
 	/**
 	 * Performs actions based on the button pressed
@@ -183,7 +162,15 @@ public class TestEnvironmentMovement extends JPanel implements ActionListener {
 			tfOut = tfLeftSide;
 		}
 		for(int i=0; i<tfIn.length; i++) {
-			array7.setElement(i, Integer.parseInt(tfIn[i].getText()) );
+			try{
+				array7.setElement(i, Integer.parseInt(tfIn[i].getText()) );
+			}
+			catch(NumberFormatException e1){
+				System.out.println("Fyll i raderna med enbart 1or och 0or");
+			}
+			catch(NullPointerException e2){
+				System.out.println("Fyll i raderna!");
+			}
 		}
 		if(direction == "Left") 
 			array7 = array7x7.shiftLeft(array7);

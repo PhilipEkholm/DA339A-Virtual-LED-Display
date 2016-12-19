@@ -48,7 +48,7 @@ public class Array7 {
 	*/
 	
 	public int[] getElements(){
-		return this.elements;
+		return ArraySupporter.copy(this.elements);
 	}
 	
 	/**

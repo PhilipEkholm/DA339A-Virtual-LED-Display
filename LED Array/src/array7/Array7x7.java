@@ -139,7 +139,9 @@ public class Array7x7 {
 	}
 	
 	/**
-	 *	Test method shiftLeft
+	 *	Shifts all the bit of the representation to the left.
+	 *	@param inputCol column to replace the column to the right with
+	 *	@return the leftmost column
 	 */
 	
 	public Array7 shiftLeft(Array7 inputCol){
@@ -157,8 +159,24 @@ public class Array7x7 {
 	}
 	
 	/**
-	 *	 
-	*/
+	 *	Shifts all the bit of the representation to the right.
+	 *	@param inputCol column to replace the column to the left with
+	 *	@return the rightmost column
+	 */
+	
+	public Array7 shiftRight(Array7 inputCol){
+		Array7 oldArrayPart = this.getCol(6);
+		
+		for(int i = 0; i < this.representation.length; i++){
+			for(int j = this.representation.length - 1; j > 0; j--){
+				this.representation[i][j] = this.representation[i][j - 1];
+			}
+		}
+		
+		this.setCol(0, inputCol);
+		
+		return oldArrayPart;
+	}
 	
 	/**
 	 *	Print the whole array as a matrix
