@@ -1,4 +1,4 @@
-package init;
+package testsuites;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
