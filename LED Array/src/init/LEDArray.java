@@ -11,6 +11,7 @@ import android.Color;
 import array7.Array7;
 import array7.Array7x7;
 import arrays.ArraySupporter;
+import arrays.ArraySupporter2D;
 import characters.Characters;
 import javadisplay.ColorDisplay;
 import testsuites.StringToColorDisplayParser;
@@ -22,7 +23,7 @@ public class LEDArray {
 	//Note that as little code as possible should be inside the main, the exception is testing.
 	public static void main(String[] args) {
 		LEDArray app = new LEDArray();
-		
+		app.launchStringToColorParser();
 	}
 	
 	/**
@@ -74,6 +75,7 @@ public class LEDArray {
 	private void launchStringToColorParser(){
 		JFrame frame = new JFrame("String to Color parser");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocation(100, 100);
 		frame.setResizable(true);
 		
 		frame.add(new StringToColorDisplayParser());
@@ -126,7 +128,6 @@ public class LEDArray {
 			for(int j = 0; j < tables[i].length; j++){
 				for(int k = 0; k < tables[i][j].length; k++){
 					tables[i][j][k] = Color.argb(rand.nextInt(256), rand.nextInt(256), rand.nextInt(256), rand.nextInt(256));
-					
 				}
 			}
 		}

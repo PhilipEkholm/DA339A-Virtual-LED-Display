@@ -8,6 +8,15 @@ package init;
  *	@version 1.0
  */
 
+/*
+ *	To Add:
+ *	Being able to change background color of the display
+ *	Remove the grid
+ *	Flow text up/down/right
+ *	Text on different Rows 
+ *	Add transparency slider
+ */
+
 public class LEDArrayWindow {
 	
 }

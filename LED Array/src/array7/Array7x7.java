@@ -139,6 +139,16 @@ public class Array7x7 {
 	}
 	
 	/**
+	 * 	Get the whole representation as int[][]
+	 * 
+	 *  @return representation as int[][]
+	 */
+	
+	public int[][] getRepresentation(){
+		return ArraySupporter2D.copy(this.representation);
+	}
+	
+	/**
 	 *	Shifts all the bit of the representation to the left.
 	 *	@param inputCol column to replace the column to the right with
 	 *	@return the leftmost column
