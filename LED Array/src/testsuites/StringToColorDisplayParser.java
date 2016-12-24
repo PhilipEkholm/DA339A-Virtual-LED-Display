@@ -57,6 +57,7 @@ public class StringToColorDisplayParser extends JPanel implements ActionListener
 	private int[][] representation;
 	public int selectedColor;
 	private Timer timer = new Timer();
+	private static boolean globalTimerFlag = false;
 	
 	public StringToColorDisplayParser(){
 		this.setLayout(new BorderLayout());
@@ -165,6 +166,7 @@ public class StringToColorDisplayParser extends JPanel implements ActionListener
 					this.inputCharacters[i] = input.charAt(i);
 				}
 				
+				globalTimerFlag = true;
 				this.showCharacters();
 			}
 		}
@@ -172,7 +174,7 @@ public class StringToColorDisplayParser extends JPanel implements ActionListener
 			this.changeSelectedColor();
 		}
 		else if(e.getSource() == btnAbort){
-			this.timer.cancel();
+			globalTimerFlag = false;
 			display.clearDisplay();
 		}
 	}
@@ -238,8 +240,10 @@ public class StringToColorDisplayParser extends JPanel implements ActionListener
 				display.updateDisplay();
 				
 				counter++;
-				if(counter == inputCharacters.length){
+				if(counter == inputCharacters.length || !globalTimerFlag){
+					globalTimerFlag = false;
 					this.cancel();
+					display.clearDisplay();
 				}
 			}
 			

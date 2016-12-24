@@ -23,7 +23,31 @@ public class LEDArray {
 	//Note that as little code as possible should be inside the main, the exception is testing.
 	public static void main(String[] args) {
 		LEDArray app = new LEDArray();
-		app.launchStringToColorParser();
+		app.initLEDArray();
+	}
+	
+	private void initLEDArray(){
+		LEDArrayView view = new LEDArrayView();
+		LEDArrayController controller = new LEDArrayController(view);
+		LEDArrayInput input = new LEDArrayInput(controller);
+		
+		JFrame frameInput = new JFrame("LED Array Kontroller");
+		frameInput.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameInput.setLocation(100, 100);
+		frameInput.setResizable(true);
+		
+		frameInput.add(input);
+		frameInput.pack();
+		frameInput.setVisible(true);
+		
+		JFrame frameView = new JFrame("LED Array");
+		frameView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameView.setLocation(300, 100);
+		frameView.setResizable(true);
+		
+		frameView.add(view);
+		frameView.pack();
+		frameView.setVisible(true);
 	}
 	
 	/**
