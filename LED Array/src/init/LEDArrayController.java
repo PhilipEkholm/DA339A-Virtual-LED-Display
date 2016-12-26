@@ -3,16 +3,18 @@ package init;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import array7.Array7;
 import array7.Array7x7;
 import characters.Characters;
 
-public class LEDArrayController {
+public class LEDArrayController extends TimerTask{
 	private LEDArrayView view;
 	private String stringToPrint;
 	private int characterColor,
 				printingFrequency;
 	private WritingDirection direction;
 	private boolean programRunning;
+	private int runningCounter;
 	private int displayLength;
 	private int[][][] representation;
 	private Array7x7[] characters;
@@ -22,20 +24,22 @@ public class LEDArrayController {
 		this.stringToPrint = "";
 		this.characterColor = android.Color.BLACK;
 		this.programRunning = false;
-		this.printingFrequency = 1;
-		this.direction = WritingDirection.LEFT;
+		this.printingFrequency = 50; //Max 50Hz
+		this.direction = WritingDirection.RIGHT;
 		this.displayLength = 5;
 		this.representation = new int[this.displayLength][7][7];
 		
-		this.stringToPrint = "Hello World!";
+		this.stringToPrint = "I AM THE BEST!!!";
 		
 		this.createCharacters();
 	}
 	
 	private void createCharacters(){
+		Timer t = new Timer();
 		this.characters = new Array7x7[this.stringToPrint.length() + 5];
+		this.runningCounter = this.characters.length * 7;
 		
-		if(this.direction == WritingDirection.LEFT){
+		if(this.direction == WritingDirection.RIGHT){
 			for(int i = 0; i < characters.length; i++){
 				if(i < 5){
 					characters[i] = Characters.getChar(' ');
@@ -46,34 +50,41 @@ public class LEDArrayController {
 			}
 		}
 		
-		for(int i = 0; i < representation.length; i++){
-			this.representation[i] = characters[i].getRepresentation();
-		}
+		t.scheduleAtFixedRate(this, 1000, 1000/this.printingFrequency);
+	}
+	
+	@Override
+	public void run() {
+		this.programRunning = true;
+		this.runningCounter--;
 		
-		this.applyColorToRepresentation();
+		this.shiftCharacters();
+		this.copyCurrentCharsToRepresentation();
 		
 		view.writeToDisplay(this.representation);
-		this.runTimer();
-	}
-	
-	private void runTimer(){
-		Timer t = new Timer();
-		t.scheduleAtFixedRate(new TimerTask(){
-			@Override
-			public void run() {
-				
-			}
-		}, 1000, 1000/this.printingFrequency);
-	}
-	
-	public void shiftCharacters(){
-		if(this.direction == WritingDirection.LEFT){
-			
+		
+		if(this.runningCounter <= 0){
+			this.cancel();
 		}
 	}
 	
-	private void applyColorToRepresentation(){
+	private void shiftCharacters(){
+		Array7 tempPart = new Array7();
+		
+		if(this.direction == WritingDirection.RIGHT){
+			for(int i = this.characters.length - 1; i >= 0; i--){
+				
+				tempPart = this.characters[i].shiftLeft(tempPart);
+			}
+		}
+	}
+	
+	private void copyCurrentCharsToRepresentation(){
+		
 		for(int i = 0; i < this.representation.length; i++){
+			this.representation[i] = characters[i].getRepresentation();
+			
+			//Apply color to the representation
 			for(int j = 0; j < this.representation[i].length; j++){
 				for(int k = 0; k < this.representation[i][j].length; k++){
 					if(this.representation[i][j][k] == 1){

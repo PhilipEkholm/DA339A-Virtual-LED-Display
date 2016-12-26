@@ -16,5 +16,4 @@ public class LEDArrayInput extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 	}
-
 }

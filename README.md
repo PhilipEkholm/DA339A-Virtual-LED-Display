@@ -45,15 +45,27 @@ https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx
 ===================================================================
 3. Att göra lista (kommer tillökas/minska kontinuerligt), arbetar ni med en viss sak skriv upp erat namn intill uppgiften!
 ===================================================================
-- Någon måste sätta sig in klasserna inuti paketet 'java' och 'android'. Detta är en nödvändighet för att kunna gå vidare till moment 4 senare.
-- Skriv kod för att shifta åt höger, upp, och ner. Modifiera Array7x7 för detta och följ exempel från shiftLeft(). Den ska fungera precis som shiftLeft
-bara det att den ska göra det åt olika håll. Kom ihåg att kommentera koden!
-- Hjälpa Lucas med ny testmiljö eventuellt. 
-- Uppdatera ArraySupporter (Philip)
+- Porta projektet till Android (Icke obligatoriskt): Porta hela projektet så det kan köra på en Android mobil, om någon är uppe för detta.
+- Skapa ett klassdiagram som rör följande filer för moment 7:
+LEDArray
+LEDArrayView
+LEDArrayController
+LEDArrayInput
+WritingDirection
+ColorDisplay
+Color
+IllegalBitException
+Characters
+Array7
+Array7x7
+- Kommentera testsuites/StringToColorDisplayParser programmet, såväl som huvudprogrammet.
 
+Åtminståne en av följande extrauppgifter måste göras:
 
-Då vi är 7 personer i den här gruppen är ett minimum av en extrauppgift också nödvändig. Ta detta också i hänsyn.
-
+- Skriva i olika riktningar på displayen, finns någorlunda stöd för detta redan, men inte helt implementerat. Kolla WritingDirection för detta. Man ska i så fall kunna via antingen knappar, eller annan form av fin styrning kontrollera detta i programmet.
+- Kunna styra hur lång ColorDisplay ska vara. Den kan skalas i nuläget genom att dra ut fönstret, men tanken är i så fall att fler celler ska visas. Vill man ha en riktig utmaning kan man försöka fixa så man kan ha flera rader i programmet!
+- Kunna ta en bild och representera denna i en ColorDisplay, denna uppgift täcks under optionella uppgifter i uppgiftsbeskrivningen.
+- Lägga till en transparency slider för att justera transparensen på texten som åker igenom.
 
 ===================================================================
 4. Intressanta länkar & Resurser
