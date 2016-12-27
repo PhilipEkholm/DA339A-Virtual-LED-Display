@@ -7,6 +7,14 @@ import array7.Array7;
 import array7.Array7x7;
 import characters.Characters;
 
+/**
+ *	This is where the final product will be built, combining all the code
+ *	into the exclusive product! 
+ *	
+ *	@author Carl Weiwert, Oliver Josefsson, Lucas Borg, Björn Sjölund, Sebastian Andersson, Hampus Holst, Philip Ekholm
+ *	@version 1.0
+ */
+
 public class LEDArrayController extends TimerTask{
 	private LEDArrayView view;
 	private String stringToPrint;
@@ -18,8 +26,10 @@ public class LEDArrayController extends TimerTask{
 	private int displayLength;
 	private int[][][] representation;
 	private Array7x7[] characters;
+	public static Timer t = new Timer();
 	
 	public LEDArrayController(LEDArrayView view){
+		
 		this.view = view;
 		this.stringToPrint = "";
 		this.characterColor = android.Color.BLACK;
@@ -30,12 +40,10 @@ public class LEDArrayController extends TimerTask{
 		this.representation = new int[this.displayLength][7][7];
 		
 		this.stringToPrint = "";
-		
-		this.createCharacters();
 	}
 	
 	public void createCharacters(){
-		Timer t = new Timer();
+		
 		this.characters = new Array7x7[this.stringToPrint.length() + 5];
 		this.runningCounter = this.characters.length * 7;
 		
@@ -50,21 +58,25 @@ public class LEDArrayController extends TimerTask{
 			}
 		}
 		
-		t.scheduleAtFixedRate(this, 1000, 1000/this.printingFrequency);
+		if(!this.programRunning){
+			t.scheduleAtFixedRate(this, 1000, 1000/printingFrequency);
+			this.programRunning = true;
+		}
 	}
 	
 	@Override
 	public void run() {
-		this.programRunning = true;
 		this.runningCounter--;
-		
+			
 		this.shiftCharacters();
 		this.copyCurrentCharsToRepresentation();
-		
+			
 		view.writeToDisplay(this.representation);
 		
 		if(this.runningCounter <= 0){
+			this.programRunning = false;
 			this.cancel();
+			t.purge();
 		}
 	}
 	
@@ -93,6 +105,14 @@ public class LEDArrayController extends TimerTask{
 				}
 			}
 		}
+	}
+	
+	public void clearDisplay(){
+		this.view.clearDisplay();
+	}
+
+	public int getPrintingFrequency() {
+		return printingFrequency;
 	}
 
 	public void setDisplayLength(int displayLength) {
@@ -145,6 +165,8 @@ public class LEDArrayController extends TimerTask{
 	public void setProgramRunning(boolean programRunning) {
 		this.programRunning = programRunning;
 	}
+	
+	
 }
 
 

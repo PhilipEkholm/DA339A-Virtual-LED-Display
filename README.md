@@ -59,6 +59,7 @@ Characters
 Array7
 Array7x7
 - Kommentera testsuites/StringToColorDisplayParser programmet, såväl som huvudprogrammet.
+- Lösa problemet med att om man klickar på avbryt, sedan kommer starta igen, kommer det kastas ett exception.
 
 Åtminståne en av följande extrauppgifter måste göras:
 
