@@ -33,7 +33,7 @@ public class LEDArray {
 		
 		JFrame frameInput = new JFrame("LED Array Kontroller");
 		frameInput.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameInput.setLocation(100, 100);
+		frameInput.setLocation(40, 70);
 		frameInput.setResizable(true);
 		
 		frameInput.add(input);
@@ -42,7 +42,7 @@ public class LEDArray {
 		
 		JFrame frameView = new JFrame("LED Array");
 		frameView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameView.setLocation(300, 100);
+		frameView.setLocation(300, 70);
 		frameView.setResizable(true);
 		
 		frameView.add(view);

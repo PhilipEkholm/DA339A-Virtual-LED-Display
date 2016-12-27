@@ -24,17 +24,17 @@ public class LEDArrayController extends TimerTask{
 		this.stringToPrint = "";
 		this.characterColor = android.Color.BLACK;
 		this.programRunning = false;
-		this.printingFrequency = 50; //Max 50Hz
+		this.printingFrequency = 5; //Max 50Hz
 		this.direction = WritingDirection.RIGHT;
 		this.displayLength = 5;
 		this.representation = new int[this.displayLength][7][7];
 		
-		this.stringToPrint = "I AM THE BEST!!!";
+		this.stringToPrint = "";
 		
 		this.createCharacters();
 	}
 	
-	private void createCharacters(){
+	public void createCharacters(){
 		Timer t = new Timer();
 		this.characters = new Array7x7[this.stringToPrint.length() + 5];
 		this.runningCounter = this.characters.length * 7;
