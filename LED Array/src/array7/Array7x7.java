@@ -7,7 +7,7 @@ import exceptions.IllegalBitException;
  * 	The Class Array 7x7 is an extended version of the two dimensional
  * 	Integer-array.
  * 
- * 	@author Philip Ekholm
+ * 	@author Philip Ekholm, Lucas Borg (shiftUp & shiftDown)
  * 	Class created 2016-12-04 16:01
  */
 
@@ -184,6 +184,44 @@ public class Array7x7 {
 		}
 		
 		this.setCol(0, inputCol);
+		
+		return oldArrayPart;
+	}
+	
+	/**
+	 *	Shifts all the bit of the representation upwards.
+	 *	@param inputRow row to replace the row upwards with
+	 *	@return the top row
+	 */
+	public Array7 shiftUp(Array7 inputRow) {
+		Array7 oldArrayPart = this.getCol(6);
+		
+		for(int i = 0; i<this.representation.length-1; i++) {
+			for(int j = 0; j<this.representation[i].length - 1; j++){
+				this.representation[i][j] = this.representation[i+1][j];
+			}
+		}
+		
+		this.setRow(6, inputRow);
+		
+		return oldArrayPart;
+	}
+	
+	/**
+	 *	Shifts all the bit of the representation downwards.
+	 *	@param inputRow row to replace the row downwards with
+	 *	@return the bottom row
+	 */
+	public Array7 shiftDown(Array7 inputRow) {
+		Array7 oldArrayPart = this.getCol(0);
+		
+		for(int i = this.representation.length-1; i>0; i--) {
+			for(int j = 0; j<this.representation[i].length - 1; j++){
+				this.representation[i][j] = this.representation[i-1][j];
+			}
+		}
+		
+		this.setRow(0, inputRow);
 		
 		return oldArrayPart;
 	}
