@@ -46,20 +46,7 @@ https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx
 3. Att göra lista (kommer tillökas/minska kontinuerligt), arbetar ni med en viss sak skriv upp erat namn intill uppgiften!
 ===================================================================
 - Porta projektet till Android (Icke obligatoriskt): Porta hela projektet så det kan köra på en Android mobil, om någon är uppe för detta.
-- Skapa ett klassdiagram som rör följande filer för moment 7:
-LEDArray
-LEDArrayView
-LEDArrayController
-LEDArrayInput
-WritingDirection
-ColorDisplay
-Color
-IllegalBitException
-Characters
-Array7
-Array7x7
 - Kommentera testsuites/StringToColorDisplayParser programmet, såväl som huvudprogrammet.
-- Lösa problemet med att om man klickar på avbryt, sedan kommer starta igen, kommer det kastas ett exception.
 
 Åtminståne en av följande extrauppgifter måste göras:
 
