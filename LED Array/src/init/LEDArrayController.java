@@ -15,7 +15,7 @@ import characters.Characters;
  *	@version 1.0
  */
 
-public class LEDArrayController extends TimerTask{
+public class LEDArrayController{
 	private LEDArrayView view;
 	private String stringToPrint;
 	private int characterColor,
@@ -59,24 +59,25 @@ public class LEDArrayController extends TimerTask{
 		}
 		
 		if(!this.programRunning){
-			t.scheduleAtFixedRate(this, 1000, 1000/printingFrequency);
+			t.scheduleAtFixedRate(new TimerTask(){
+				public void run(){
+					LEDArrayController ref = LEDArrayController.this; //Instance to the outer class, the key to solving the reference problem!
+					
+					ref.runningCounter--;
+					
+					ref.shiftCharacters();
+					ref.copyCurrentCharsToRepresentation();
+						
+					ref.view.writeToDisplay(ref.representation);
+					
+					if(ref.runningCounter <= 0 || !ref.programRunning){
+						ref.programRunning = false;
+						ref.clearDisplay();
+						this.cancel();
+					}
+				}
+			}, 1000, 1000/printingFrequency);
 			this.programRunning = true;
-		}
-	}
-	
-	@Override
-	public void run() {
-		this.runningCounter--;
-			
-		this.shiftCharacters();
-		this.copyCurrentCharsToRepresentation();
-			
-		view.writeToDisplay(this.representation);
-		
-		if(this.runningCounter <= 0){
-			this.programRunning = false;
-			this.cancel();
-			t.purge();
 		}
 	}
 	

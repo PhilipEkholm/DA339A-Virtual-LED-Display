@@ -82,7 +82,7 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		lblText.setBounds(15, 10, 50, 50);
 		fieldInput.setBounds(50, 25, 150, 25);
 		lblColor.setBounds(15, 50, 50, 50);
-		comboBoxColor.setBounds(50, 65, 60, 20);
+		comboBoxColor.setBounds(50, 65, 90, 20);
 		lblFrequency.setBounds(15, 85, 100, 50);
 		btnStart.setBounds(10, 180, 75, 25);
 		btnAbort.setBounds(100, 180, 75, 25);
@@ -127,8 +127,6 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		}
 		else if(e.getSource() == btnAbort){
 			controller.setProgramRunning(false);
-			controller.cancel();
-			controller.clearDisplay();
 		}
 		else if(e.getSource() == comboBoxColor){
 			controller.setCharacterColor(comboBoxColor.getSelectedItem());
