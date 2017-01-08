@@ -1,11 +1,13 @@
 package init;
 
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import android.Color;
 import array7.Array7;
@@ -18,14 +20,55 @@ import testsuites.StringToColorDisplayParser;
 import testsuites.TestEnvironmentArrays;
 import testsuites.TestEnvironmentMovement;
 
-public class LEDArray {
+/**
+ * Runs the test environments and the finished program
+ * @author Carl Weiwert, Oliver Josefsson, Lucas Borg, Björn Sjölund, Sebastian Andersson, Hampus Holst, Philip Ekholm
+ * @version 1.05
+ */
+public class LEDArray implements ActionListener{
+	private JButton btnTArrays = new JButton("Test Arrays"),
+					btnTMove = new JButton("Test Rörelse"),
+					btnLedArray = new JButton("Led Array");
 	
-	//Note that as little code as possible should be inside the main, the exception is testing.
 	public static void main(String[] args) {
 		LEDArray app = new LEDArray();
-		app.initLEDArray();
+		app.choices();
 	}
 	
+	/**
+	 * Choices of which program or test
+	 */
+	private void choices() {
+		JFrame frame = new JFrame("Val");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(true);
+		frame.setLayout(new GridLayout(2,2));
+		
+		JPanel panel = new JPanel( new GridLayout(1,2));
+		JPanel panel2 = new JPanel(new GridLayout(1,1));
+		panel.add(btnTArrays);
+		panel.add(btnTMove);
+		panel2.add(btnLedArray);
+		frame.add(panel);
+		frame.add(panel2);
+		frame.pack();
+		frame.setVisible(true);
+		
+		addListeners();
+	}
+	
+	/**
+	 * Adds listeners
+	 */
+	private void addListeners() {
+		btnTArrays.addActionListener(this);
+		btnTMove.addActionListener(this);
+		btnLedArray.addActionListener(this);
+	}
+	
+	/**
+	 * Creates an environment for a program which moves text across a window.
+	 */
 	private void initLEDArray(){
 		LEDArrayView view = new LEDArrayView();
 		LEDArrayController controller = new LEDArrayController(view);
@@ -65,9 +108,12 @@ public class LEDArray {
 		JFrame frame = new JFrame("Test Environment Arrays");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(true);
+		frame.setLocation(600, 350);
 		frame.add(testA);
 		frame.pack();
 		frame.setVisible(true);
+		
+		
 	}
 	
 	/**
@@ -86,6 +132,7 @@ public class LEDArray {
 		JFrame frame = new JFrame("Test Environment Arrays");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(true);
+		frame.setLocation(300, 350);
 		
 		frame.add(testA);
 		frame.pack();
@@ -116,7 +163,6 @@ public class LEDArray {
 		
 		timer.scheduleAtFixedRate(new TimerTask(){
 
-			@Override
 			public void run() {
 				System.out.println("Hej");
 			}
@@ -176,5 +222,21 @@ public class LEDArray {
 			}
 			
 		}, 1, 1000);
+	}
+
+	/**
+	 * Checks which action is performed and does action based on it. 
+	 * @param The action performed
+	 */
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btnTArrays) {
+			initTestSuite();
+		}
+		else if(e.getSource() == btnTMove) {
+			shiftTestSuite();
+		}
+		else if(e.getSource() == btnLedArray) {
+			initLEDArray();
+		}
 	}
 }
