@@ -16,7 +16,7 @@ import javax.swing.event.ChangeListener;
  *	into the exclusive product! 
  *	
  *	@author Carl Weiwert, Oliver Josefsson, Lucas Borg, Björn Sjölund, Sebastian Andersson, Hampus Holst, Philip Ekholm
- *	@version 1.0
+ *	@version 1.05
  */
 
 public class LEDArrayInput extends JPanel implements ActionListener, ChangeListener{
@@ -28,17 +28,21 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 	private JLabel 	lblText = new JLabel("Text: "),
 					lblHeader = new JLabel("LED-Array"),
 					lblInfo = new JLabel(""),
-			lblColor = new JLabel("Färg: "),
-			lblFrequency = new JLabel("Frekvens: 1Hz"),
-			lblWritingDirection = new JLabel("Skrivningsriktning");
-	private JButton 	btnStart = new JButton("Starta"),
+					lblColor = new JLabel("Färg: "),
+					lblFrequency = new JLabel("Frekvens: 1Hz"),
+					lblWritingDirection = new JLabel("Skrivningsriktning"),
+					lblTransparency = new JLabel("Genomskinlighet:");
+	private JButton btnStart = new JButton("Starta"),
 			btnAbort = new JButton("Avbryt"),
 			btnDirectionRight = new JButton("Höger"),
 			btnDirectionLeft = new JButton("Vänster"),
 			btnDirectionUp = new JButton("Uppåt"),
-			btnDirectionDown = new JButton("Neråt");
+			btnDirectionDown = new JButton("Neråt"),
+			btnKaleidoskopOn = new JButton("ON"),
+			btnKaleidoskopOff = new JButton("OFF");
 	private JTextField 	fieldInput = new JTextField();
-	private JSlider sliderFreq = new JSlider(1, 50);
+	private JSlider sliderFreq = new JSlider(1, 50),
+			sliderTrans = new JSlider(0, 255);
 	private JComboBox comboBoxColor = new JComboBox(new String[] {
 		"Svart",
 		"Grå",
@@ -50,6 +54,10 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		"Cyan"
 	});
 	
+	/**
+	 * Constructs the content of the window.
+	 * @param Controlls the changes and actions in LEDArrayInput
+	 */
 	public LEDArrayInput(LEDArrayController controller){
 		this.controller = controller;
 		this.setLayout(new BorderLayout());
@@ -60,6 +68,9 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		sliderFreq.setBackground(Color.WHITE);
 		sliderFreq.setPaintTicks(true);
 		sliderFreq.setValue(controller.getPrintingFrequency());
+		sliderTrans.setBackground(Color.WHITE);
+		sliderTrans.setPaintTicks(true);
+		sliderTrans.setValue(255);
 		Font 	headerFont = new Font("Arial",  Font.PLAIN, 25),
 				smallerFont = new Font("Arial", Font.PLAIN, 10);
 		lblInfo.setFont(smallerFont);
@@ -75,7 +86,6 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 	/**
 	 *	Set the dimensions for all components 
 	 */
-	
 	private void setPositions(){
 		nullPanel.setPreferredSize(new Dimension(225, 400));
 		
@@ -87,16 +97,28 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		btnStart.setBounds(10, 180, 75, 25);
 		btnAbort.setBounds(100, 180, 75, 25);
 		sliderFreq.setBounds(10, 120, 200, 50);
-		
+		lblTransparency.setBounds(15, 200, 100, 50);
+		sliderTrans.setBounds(10, 250, 200, 50);
 	}
 	
+	/**
+	 * Adds listeners to components
+	 */
 	private void addListeners(){
 		btnStart.addActionListener(this);
 		btnAbort.addActionListener(this);
 		comboBoxColor.addActionListener(this);
 		sliderFreq.addChangeListener(this);
+		btnDirectionLeft.addActionListener(this);
+		btnDirectionRight.addActionListener(this);
+		btnDirectionUp.addActionListener(this);
+		btnDirectionDown.addActionListener(this);
+		sliderTrans.addChangeListener(this);
 	}
 	
+	/**
+	 * Adds components to panels and the window
+	 */
 	private void addComponents(){
 		nullPanel.add(lblText);
 		nullPanel.add(fieldInput);
@@ -106,6 +128,8 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		nullPanel.add(sliderFreq);
 		nullPanel.add(btnStart);
 		nullPanel.add(btnAbort);
+		nullPanel.add(sliderTrans);
+		nullPanel.add(lblTransparency);
 		
 		headerPanel.add(lblHeader);
 		infoPanel.add(lblInfo);
@@ -114,7 +138,10 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		this.add(infoPanel, BorderLayout.SOUTH);
 	}
 
-	@Override
+	/**
+	 * Checks which action is performed. 
+	 * @param The action performed
+	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnStart){
 			if(!this.fieldInput.getText().equals("")){
@@ -129,38 +156,36 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 			controller.setProgramRunning(false);
 		}
 		else if(e.getSource() == comboBoxColor){
-			controller.setCharacterColor(comboBoxColor.getSelectedItem());
+			controller.setCharacterColor(comboBoxColor.getSelectedItem(), this.sliderTrans.getValue());
+		}
+		else if(e.getSource() == btnDirectionLeft) {
+				controller.setDirection(WritingDirection.LEFT);
+		}
+		else if(e.getSource() == btnDirectionUp) {
+				controller.setDirection(WritingDirection.UP);
+		}
+		else if(e.getSource() == btnDirectionRight) {
+				controller.setDirection(WritingDirection.RIGHT);
+		}
+		else if(e.getSource() == btnDirectionUp) {
+				controller.setDirection(WritingDirection.UP);
+		}
+		else if(e.getSource() == btnDirectionDown) {
+				controller.setDirection(WritingDirection.DOWN);
 		}
 	}
 
-	@Override
+	/**
+	 * Checks the changes on the slider.
+	 * @param The change made on the slider
+	 */
 	public void stateChanged(ChangeEvent e) {
 		if(e.getSource() == sliderFreq){
 			this.lblFrequency.setText("Frekvens: " + this.sliderFreq.getValue() + "Hz");
 			this.controller.setPrintingFrequency(this.sliderFreq.getValue());
 		}
+		else if(e.getSource() == sliderTrans) {
+			this.controller.setCharacterColor(comboBoxColor.getSelectedItem(), this.sliderTrans.getValue());
+		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
