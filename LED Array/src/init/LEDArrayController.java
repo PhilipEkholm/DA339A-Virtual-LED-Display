@@ -1,5 +1,6 @@
 package init;
 
+import java.awt.Color;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -12,7 +13,7 @@ import characters.Characters;
  *	into the exclusive product! 
  *	
  *	@author Carl Weiwert, Oliver Josefsson, Lucas Borg, Björn Sjölund, Sebastian Andersson, Hampus Holst, Philip Ekholm
- *	@version 1.0
+ *	@version 1.05
  */
 
 public class LEDArrayController{
@@ -28,6 +29,10 @@ public class LEDArrayController{
 	private Array7x7[] characters;
 	public static Timer t = new Timer();
 	
+	/**
+	 * Construct a controller which can make changes in a window
+	 * @param The controlled part
+	 */
 	public LEDArrayController(LEDArrayView view){
 		
 		this.view = view;
@@ -35,19 +40,23 @@ public class LEDArrayController{
 		this.characterColor = android.Color.BLACK;
 		this.programRunning = false;
 		this.printingFrequency = 5; //Max 50Hz
-		this.direction = WritingDirection.RIGHT;
+		this.direction = WritingDirection.LEFT;
 		this.displayLength = 5;
 		this.representation = new int[this.displayLength][7][7];
 		
 		this.stringToPrint = "";
 	}
 	
+	/**
+	 * Creates and moves characters in the window.
+	 */
 	public void createCharacters(){
 		
 		this.characters = new Array7x7[this.stringToPrint.length() + 5];
 		this.runningCounter = this.characters.length * 7;
 		
-		if(this.direction == WritingDirection.RIGHT){
+	
+//		if(this.direction == WritingDirection.LEFT){
 			for(int i = 0; i < characters.length; i++){
 				if(i < 5){
 					characters[i] = Characters.getChar(' ');
@@ -56,7 +65,7 @@ public class LEDArrayController{
 					characters[i] = Characters.getChar(this.stringToPrint.charAt(i - 5));
 				}
 			}
-		}
+//		}
 		
 		if(!this.programRunning){
 			t.scheduleAtFixedRate(new TimerTask(){
@@ -81,10 +90,13 @@ public class LEDArrayController{
 		}
 	}
 	
+	/**
+	 * Shifts the characters the desired direction
+	 */
 	private void shiftCharacters(){
 		Array7 tempPart = new Array7();
 		
-		if(this.direction == WritingDirection.RIGHT){
+		if(this.direction == WritingDirection.LEFT){
 			for(int i = this.characters.length - 1; i >= 0; i--){
 				
 				tempPart = this.characters[i].shiftLeft(tempPart);
@@ -108,83 +120,95 @@ public class LEDArrayController{
 		}
 	}
 	
+	/**
+	 * Clears the display
+	 */
 	public void clearDisplay(){
 		this.view.clearDisplay();
 	}
 
+	/**
+	 * 
+	 * @return The frequency which the characters moves
+	 */
 	public int getPrintingFrequency() {
 		return printingFrequency;
 	}
 
+	/**
+	 * Sets the length of the display
+	 * @param The length of the display
+	 */
 	public void setDisplayLength(int displayLength) {
 		this.displayLength = displayLength;
 	}
 
+	/**
+	 * Sets which String shall be printed
+	 * @param The String wich shall be printed
+	 */
 	public void setStringToPrint(String stringToPrint) {
 		this.stringToPrint = stringToPrint;
 	}
 
-	public void setCharacterColor(Object option){
+	/**
+	 * Sets the color of the characters
+	 * @param The color
+	 * @param The transparency
+	 */
+	public void setCharacterColor(Object option, int transparency){
 		switch((String)option){
 			case "Svart":
-				this.characterColor = android.Color.BLACK;
+				this.characterColor = android.Color.argb(transparency, Color.BLACK.getRed(), Color.BLACK.getGreen(), Color.BLACK.getBlue());
 				break;
 			case "Grå":
-				this.characterColor = android.Color.GRAY;
+				this.characterColor = android.Color.argb(transparency, Color.GRAY.getRed(), Color.GRAY.getGreen(), Color.GRAY.getBlue());
 				break;
 			case "Vit":
-				this.characterColor = android.Color.WHITE;
+				this.characterColor = android.Color.argb(transparency, Color.WHITE.getRed(), Color.WHITE.getGreen(), Color.WHITE.getBlue());
 				break;
 			case "Röd":
-				this.characterColor = android.Color.RED;
+				this.characterColor = android.Color.argb(transparency, Color.RED.getRed(), Color.RED.getGreen(), Color.RED.getBlue());
 				break;
 			case "Grön":
-				this.characterColor = android.Color.GREEN;
+				this.characterColor = android.Color.argb(transparency, Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue());
 				break;
 			case "Blå":
-				this.characterColor = android.Color.BLUE;
+				this.characterColor = android.Color.argb(transparency, Color.BLUE.getRed(), Color.BLUE.getGreen(), Color.BLUE.getBlue());
 				break;
 			case "Gul":
-				this.characterColor = android.Color.YELLOW;
+				this.characterColor = android.Color.argb(transparency, Color.YELLOW.getRed(), Color.YELLOW.getGreen(), Color.YELLOW.getBlue());
 				break;
 			case "Cyan":
-				this.characterColor = android.Color.CYAN;
+				this.characterColor = android.Color.argb(transparency, Color.CYAN.getRed(), Color.CYAN.getGreen(), Color.CYAN.getBlue());
 				break;
 			default:
-				this.characterColor = android.Color.BLACK;
+				this.characterColor = android.Color.argb(transparency, Color.BLACK.getRed(), Color.BLACK.getGreen(), Color.BLACK.getBlue());
 		}
 	}
 
+	/**
+	 * Sets the speed which the characters moves
+	 * @param The frequency which the characters moves
+	 */
 	public void setPrintingFrequency(int printingFrequency) {
 		this.printingFrequency = printingFrequency;
 	}
 
+	/**
+	 * Sets the writing direction
+	 * @param Direction the characters moves
+	 */
 	public void setDirection(WritingDirection direction) {
 		this.direction = direction;
 	}
 
+	/**
+	 * Starts/stops the program
+	 * @param true/false
+	 */
 	public void setProgramRunning(boolean programRunning) {
 		this.programRunning = programRunning;
 	}
 	
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
