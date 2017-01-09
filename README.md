@@ -45,15 +45,12 @@ https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKWClAD_iKpNC0bGHxGhcx
 ===================================================================
 3. Att göra lista (kommer tillökas/minska kontinuerligt), arbetar ni med en viss sak skriv upp erat namn intill uppgiften!
 ===================================================================
-- Porta projektet till Android (Icke obligatoriskt): Porta hela projektet så det kan köra på en Android mobil, om någon är uppe för detta.
-- Kommentera testsuites/StringToColorDisplayParser programmet, såväl som huvudprogrammet.
 
-Åtminståne en av följande extrauppgifter måste göras:
+Åtminståne en av följande extrauppgifter måste göras (klart!):
 
 - Skriva i olika riktningar på displayen, finns någorlunda stöd för detta redan, men inte helt implementerat. Kolla WritingDirection för detta. Man ska i så fall kunna via antingen knappar, eller annan form av fin styrning kontrollera detta i programmet.
 - Kunna styra hur lång ColorDisplay ska vara. Den kan skalas i nuläget genom att dra ut fönstret, men tanken är i så fall att fler celler ska visas. Vill man ha en riktig utmaning kan man försöka fixa så man kan ha flera rader i programmet!
 - Kunna ta en bild och representera denna i en ColorDisplay, denna uppgift täcks under optionella uppgifter i uppgiftsbeskrivningen.
-- Lägga till en transparency slider för att justera transparensen på texten som åker igenom.
 
 ===================================================================
 4. Intressanta länkar & Resurser

@@ -36,6 +36,10 @@ public class LEDArrayView extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private ColorDisplay display;
 	
+	/**
+	 *	Start the display window 
+	 */
+	
 	public LEDArrayView(){
 		this.setLayout(new GridLayout(1, 1));
 		this.setBackground(Color.WHITE);
@@ -46,9 +50,18 @@ public class LEDArrayView extends JPanel{
 		this.add(display);
 	}
 	
+	/**
+	 *	Clears the display 
+	 */
+	
 	public void clearDisplay(){
 		display.clearDisplay();
 	}
+	
+	/**
+	 *	Write the arrays to the display 
+	 *	@param colors colors passed as a 3D-Array
+	 */
 	
 	public void writeToDisplay(int[][][] colors){
 		int colPages = display.getHorizontalPages();
@@ -60,12 +73,19 @@ public class LEDArrayView extends JPanel{
 		display.updateDisplay();
 	}
 	
+	/**
+	 * 	Set grid color from controller, not implemented
+	 * 	@param color color to set grid to
+	 */
+	
 	public void setGridColor(int color){
 		display.setGridColor(color);
 	}
 	
 	/**
+	 * 	Change the bg-color, method for controller to access
 	 *	Note that the background color will only be changed AFTER clearDisplay is called 
+	 *	@param color color to set bg to
 	 */
 	public void setBackgroundColor(int color){
 		display.setBackgroundColor(color);

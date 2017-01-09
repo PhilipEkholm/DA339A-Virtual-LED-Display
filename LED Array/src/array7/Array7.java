@@ -56,7 +56,6 @@ public class Array7 {
 	 *
 	 *	@param pos position to target in array
 	 *	@param value value to set position to
-	 *	@return specific value at position
 	*/
 	
 	public void setElement(int pos, int value) throws IllegalBitException{

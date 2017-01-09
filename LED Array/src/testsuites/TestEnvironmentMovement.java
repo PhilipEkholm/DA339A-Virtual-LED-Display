@@ -139,7 +139,7 @@ public class TestEnvironmentMovement extends JPanel implements ActionListener {
 
 	/**
 	 * Performs actions based on the button pressed
-	 * @param button pressed
+	 * @param e event from button pressed
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnMoveLeft) {

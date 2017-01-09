@@ -31,7 +31,7 @@ public class LEDArrayController{
 	
 	/**
 	 * Construct a controller which can make changes in a window
-	 * @param The controlled part
+	 * @param view The controlled part
 	 */
 	public LEDArrayController(LEDArrayView view){
 		
@@ -104,6 +104,10 @@ public class LEDArrayController{
 		}
 	}
 	
+	/**
+	 *	Copy the chars to the display 
+	 */
+	
 	private void copyCurrentCharsToRepresentation(){
 		
 		for(int i = 0; i < this.representation.length; i++){
@@ -128,7 +132,6 @@ public class LEDArrayController{
 	}
 
 	/**
-	 * 
 	 * @return The frequency which the characters moves
 	 */
 	public int getPrintingFrequency() {
@@ -137,7 +140,7 @@ public class LEDArrayController{
 
 	/**
 	 * Sets the length of the display
-	 * @param The length of the display
+	 * @param displayLength the length in display units to be passed
 	 */
 	public void setDisplayLength(int displayLength) {
 		this.displayLength = displayLength;
@@ -145,7 +148,7 @@ public class LEDArrayController{
 
 	/**
 	 * Sets which String shall be printed
-	 * @param The String wich shall be printed
+	 * @param stringToPrint the string to be printed
 	 */
 	public void setStringToPrint(String stringToPrint) {
 		this.stringToPrint = stringToPrint;
@@ -153,51 +156,51 @@ public class LEDArrayController{
 
 	/**
 	 * Sets the color of the characters
-	 * @param The color
-	 * @param The transparency
+	 * @param option the combobox option passed as an object (will be typecasted)
+	 * @param opacity opacity to be passed from slider 
 	 */
-	public void setCharacterColor(Object option, int transparency){
+	public void setCharacterColor(Object option, int opacity){
 		switch((String)option){
 			case "Svart":
-				this.characterColor = android.Color.argb(transparency, Color.BLACK.getRed(), Color.BLACK.getGreen(), Color.BLACK.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.BLACK.getRed(), Color.BLACK.getGreen(), Color.BLACK.getBlue());
 				break;
 			case "Grå":
-				this.characterColor = android.Color.argb(transparency, Color.GRAY.getRed(), Color.GRAY.getGreen(), Color.GRAY.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.GRAY.getRed(), Color.GRAY.getGreen(), Color.GRAY.getBlue());
 				break;
 			case "Vit":
-				this.characterColor = android.Color.argb(transparency, Color.WHITE.getRed(), Color.WHITE.getGreen(), Color.WHITE.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.WHITE.getRed(), Color.WHITE.getGreen(), Color.WHITE.getBlue());
 				break;
 			case "Röd":
-				this.characterColor = android.Color.argb(transparency, Color.RED.getRed(), Color.RED.getGreen(), Color.RED.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.RED.getRed(), Color.RED.getGreen(), Color.RED.getBlue());
 				break;
 			case "Grön":
-				this.characterColor = android.Color.argb(transparency, Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.GREEN.getRed(), Color.GREEN.getGreen(), Color.GREEN.getBlue());
 				break;
 			case "Blå":
-				this.characterColor = android.Color.argb(transparency, Color.BLUE.getRed(), Color.BLUE.getGreen(), Color.BLUE.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.BLUE.getRed(), Color.BLUE.getGreen(), Color.BLUE.getBlue());
 				break;
 			case "Gul":
-				this.characterColor = android.Color.argb(transparency, Color.YELLOW.getRed(), Color.YELLOW.getGreen(), Color.YELLOW.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.YELLOW.getRed(), Color.YELLOW.getGreen(), Color.YELLOW.getBlue());
 				break;
 			case "Cyan":
-				this.characterColor = android.Color.argb(transparency, Color.CYAN.getRed(), Color.CYAN.getGreen(), Color.CYAN.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.CYAN.getRed(), Color.CYAN.getGreen(), Color.CYAN.getBlue());
 				break;
 			default:
-				this.characterColor = android.Color.argb(transparency, Color.BLACK.getRed(), Color.BLACK.getGreen(), Color.BLACK.getBlue());
+				this.characterColor = android.Color.argb(opacity, Color.BLACK.getRed(), Color.BLACK.getGreen(), Color.BLACK.getBlue());
 		}
 	}
 
 	/**
 	 * Sets the speed which the characters moves
-	 * @param The frequency which the characters moves
+	 * @param printingFrequency which the characters will move by (inverse of period time)
 	 */
 	public void setPrintingFrequency(int printingFrequency) {
 		this.printingFrequency = printingFrequency;
 	}
 
 	/**
-	 * Sets the writing direction
-	 * @param Direction the characters moves
+	 * Sets the writing direction (not yet implemented)
+	 * @param direction direction for character moving
 	 */
 	public void setDirection(WritingDirection direction) {
 		this.direction = direction;
@@ -205,7 +208,7 @@ public class LEDArrayController{
 
 	/**
 	 * Starts/stops the program
-	 * @param true/false
+	 * @param programRunning global boolean regulated in system
 	 */
 	public void setProgramRunning(boolean programRunning) {
 		this.programRunning = programRunning;

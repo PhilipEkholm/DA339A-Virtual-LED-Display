@@ -7,7 +7,7 @@ import exceptions.IllegalBitException;
  * 	The Class Array 7x7 is an extended version of the two dimensional
  * 	Integer-array.
  * 
- * 	@author Philip Ekholm, Lucas Borg (shiftUp & shiftDown)
+ * 	@author Philip Ekholm, Lucas Borg (shiftUp and shiftDown)
  * 	Class created 2016-12-04 16:01
  */
 
@@ -17,7 +17,7 @@ public class Array7x7 {
 	/**
 	 *	Starts up an Array7x7 and sets character representation.
 	 *	This constructor will be called if getChar in characters is called.
-	 *	@param representation display character 
+	 *	@param character display character 
 	*/
 	
 	public Array7x7(int[][] character){
@@ -36,7 +36,8 @@ public class Array7x7 {
 	/**
 	 *	Simple getter for the representation-array
 	 *
-	 *	@param pos position to target in array
+	 *	@param row position to target in array
+	 *	@param col position to target in array
 	 *	@return specific value at position
 	*/
 	
@@ -47,9 +48,9 @@ public class Array7x7 {
 	/**
 	 *	Simple setter for the elements-array. If illegal value is passed then IllegalBitException will be thrown
 	 *
-	 *	@param pos position to target in array
+	 *	@param row position to target in array
+	 *	@param col position to target in array
 	 *	@param value value to set position to
-	 *	@return specific value at position
 	*/
 	
 	public void setElement(int row, int col, int value) throws IllegalBitException{
@@ -68,9 +69,8 @@ public class Array7x7 {
 	 *	Please access arrays using getters and 
 	 *	setters, even internally for consistency reasons.
 	 *
-	 *	@param pos position to target in array
-	 *	@param value value to set position to
-	 *	@return specific value at position
+	 *	@param row to target in array
+	 *	@return specific row at position
 	*/
 	
 	public Array7 getRow(int row){
@@ -122,7 +122,7 @@ public class Array7x7 {
 	 *	Set a whole column of values.
 	 *
 	 *	@param col column to access, starts at 0
-	 *	@param newColValue to overwrite the column with
+	 *	@param arr array to overwrite the column with
 	*/
 	
 	public void setCol(int col, Array7 arr) throws IllegalBitException{

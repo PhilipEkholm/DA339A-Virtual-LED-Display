@@ -67,6 +67,9 @@ public class Characters {
 			case '.':
 				array = new Array7x7(DOT);
 				break;
+			case ',':
+				array = new Array7x7(COMMA);
+				break;
 			case '/':
 				array = new Array7x7(SLASH_FWD);
 				break;
@@ -425,6 +428,16 @@ public class Characters {
 		{0, 0, 0, 0, 0, 0, 0},
 		{0, 1, 0, 0, 0, 0, 0}
 	};
+	
+	private static int[][] COMMA = {
+			{0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 1, 0, 0, 0, 0},
+			{0, 1, 0, 0, 0, 0, 0}
+		};
 	
 	private static int[][] SLASH_FWD = {
 		{0, 0, 0, 0, 0, 1, 0},

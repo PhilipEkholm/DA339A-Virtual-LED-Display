@@ -75,7 +75,7 @@ public class LEDArray implements ActionListener{
 		LEDArrayInput input = new LEDArrayInput(controller);
 		
 		JFrame frameInput = new JFrame("LED Array Kontroller");
-		frameInput.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameInput.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE); //To avoid closing the whole program
 		frameInput.setLocation(40, 70);
 		frameInput.setResizable(true);
 		
@@ -84,7 +84,7 @@ public class LEDArray implements ActionListener{
 		frameInput.setVisible(true);
 		
 		JFrame frameView = new JFrame("LED Array");
-		frameView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frameView.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//To avoid closing the whole program
 		frameView.setLocation(300, 70);
 		frameView.setResizable(true);
 		
@@ -106,7 +106,7 @@ public class LEDArray implements ActionListener{
 		
 		TestEnvironmentArrays testA = new TestEnvironmentArrays(Characters.getChar(character));//Creates test environment
 		JFrame frame = new JFrame("Test Environment Arrays");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//To avoid closing the whole program
 		frame.setResizable(true);
 		frame.setLocation(600, 350);
 		frame.add(testA);
@@ -130,7 +130,7 @@ public class LEDArray implements ActionListener{
 		TestEnvironmentMovement testA = new TestEnvironmentMovement(Characters.getChar(character));//Creates test environment
 		
 		JFrame frame = new JFrame("Test Environment Arrays");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//To avoid closing the whole program
 		frame.setResizable(true);
 		frame.setLocation(300, 350);
 		
@@ -226,7 +226,7 @@ public class LEDArray implements ActionListener{
 
 	/**
 	 * Checks which action is performed and does action based on it. 
-	 * @param The action performed
+	 * @param e event passed from button
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnTArrays) {

@@ -31,7 +31,7 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 					lblColor = new JLabel("Färg: "),
 					lblFrequency = new JLabel("Frekvens: 1Hz"),
 					lblWritingDirection = new JLabel("Skrivningsriktning"),
-					lblTransparency = new JLabel("Genomskinlighet:");
+					lblTransparency = new JLabel("Ogenomskinlighet:");
 	private JButton btnStart = new JButton("Starta"),
 			btnAbort = new JButton("Avbryt"),
 			btnDirectionRight = new JButton("Höger"),
@@ -42,7 +42,7 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 			btnKaleidoskopOff = new JButton("OFF");
 	private JTextField 	fieldInput = new JTextField();
 	private JSlider sliderFreq = new JSlider(1, 50),
-			sliderTrans = new JSlider(0, 255);
+			sliderOpacity = new JSlider(0, 255);
 	private JComboBox comboBoxColor = new JComboBox(new String[] {
 		"Svart",
 		"Grå",
@@ -56,7 +56,7 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 	
 	/**
 	 * Constructs the content of the window.
-	 * @param Controlls the changes and actions in LEDArrayInput
+	 * @param controller linked to the view
 	 */
 	public LEDArrayInput(LEDArrayController controller){
 		this.controller = controller;
@@ -68,9 +68,9 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		sliderFreq.setBackground(Color.WHITE);
 		sliderFreq.setPaintTicks(true);
 		sliderFreq.setValue(controller.getPrintingFrequency());
-		sliderTrans.setBackground(Color.WHITE);
-		sliderTrans.setPaintTicks(true);
-		sliderTrans.setValue(255);
+		sliderOpacity.setBackground(Color.WHITE);
+		sliderOpacity.setPaintTicks(true);
+		sliderOpacity.setValue(255);
 		Font 	headerFont = new Font("Arial",  Font.PLAIN, 25),
 				smallerFont = new Font("Arial", Font.PLAIN, 10);
 		lblInfo.setFont(smallerFont);
@@ -97,8 +97,8 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		btnStart.setBounds(10, 180, 75, 25);
 		btnAbort.setBounds(100, 180, 75, 25);
 		sliderFreq.setBounds(10, 120, 200, 50);
-		lblTransparency.setBounds(15, 200, 100, 50);
-		sliderTrans.setBounds(10, 250, 200, 50);
+		lblTransparency.setBounds(15, 200, 150, 50);
+		sliderOpacity.setBounds(10, 250, 200, 50);
 	}
 	
 	/**
@@ -113,7 +113,7 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		btnDirectionRight.addActionListener(this);
 		btnDirectionUp.addActionListener(this);
 		btnDirectionDown.addActionListener(this);
-		sliderTrans.addChangeListener(this);
+		sliderOpacity.addChangeListener(this);
 	}
 	
 	/**
@@ -128,7 +128,7 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 		nullPanel.add(sliderFreq);
 		nullPanel.add(btnStart);
 		nullPanel.add(btnAbort);
-		nullPanel.add(sliderTrans);
+		nullPanel.add(sliderOpacity);
 		nullPanel.add(lblTransparency);
 		
 		headerPanel.add(lblHeader);
@@ -140,7 +140,7 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 
 	/**
 	 * Checks which action is performed. 
-	 * @param The action performed
+	 * @param e event passed with button click
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == btnStart){
@@ -156,7 +156,7 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 			controller.setProgramRunning(false);
 		}
 		else if(e.getSource() == comboBoxColor){
-			controller.setCharacterColor(comboBoxColor.getSelectedItem(), this.sliderTrans.getValue());
+			controller.setCharacterColor(comboBoxColor.getSelectedItem(), this.sliderOpacity.getValue());
 		}
 		else if(e.getSource() == btnDirectionLeft) {
 				controller.setDirection(WritingDirection.LEFT);
@@ -177,15 +177,15 @@ public class LEDArrayInput extends JPanel implements ActionListener, ChangeListe
 
 	/**
 	 * Checks the changes on the slider.
-	 * @param The change made on the slider
+	 * @param e action event passed
 	 */
 	public void stateChanged(ChangeEvent e) {
 		if(e.getSource() == sliderFreq){
 			this.lblFrequency.setText("Frekvens: " + this.sliderFreq.getValue() + "Hz");
 			this.controller.setPrintingFrequency(this.sliderFreq.getValue());
 		}
-		else if(e.getSource() == sliderTrans) {
-			this.controller.setCharacterColor(comboBoxColor.getSelectedItem(), this.sliderTrans.getValue());
+		else if(e.getSource() == sliderOpacity) {
+			this.controller.setCharacterColor(comboBoxColor.getSelectedItem(), this.sliderOpacity.getValue());
 		}
 	}
 }

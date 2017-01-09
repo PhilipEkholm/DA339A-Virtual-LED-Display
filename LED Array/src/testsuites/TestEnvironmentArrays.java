@@ -178,7 +178,7 @@ public class TestEnvironmentArrays extends JPanel implements ActionListener {
 
 	/**
 	 * Performs actions based on the button pressed
-	 * @param button pressed
+	 * @param e event passed from buttons
 	 */
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==readRow) {
