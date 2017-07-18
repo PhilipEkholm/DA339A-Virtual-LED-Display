@@ -1,6 +1,5 @@
-package array7;
+package characters;
 
-import arrays.ArraySupporter;
 import exceptions.IllegalBitException;
 
 /**
@@ -20,7 +19,7 @@ public class Array7 {
 	 */
 	
 	public Array7(int[] elements){
-		this.elements = ArraySupporter.copy(elements);
+		this.elements = Array7.copy(elements);
 	}
 	
 	/**
@@ -48,7 +47,7 @@ public class Array7 {
 	*/
 	
 	public int[] getElements(){
-		return ArraySupporter.copy(this.elements);
+		return Array7.copy(this.elements);
 	}
 	
 	/**
@@ -85,4 +84,30 @@ public class Array7 {
 		
 		return (res + "]");
 	}
+	
+	/**
+	 *	Allows to copy and array by values.
+	 *
+	 * @param array array to be copied
+	 * @return a new array instance with same values
+	 */
+	
+	public static int[] copy(int[] array){
+		int[] newArray = new int[array.length];
+		
+		for(int i = 0; i < array.length; i++){
+			newArray[i] = array[i];
+		}
+		
+		return newArray;
+	}
 }
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 package characters;
-import array7.Array7x7;
+
+import characters.Array7x7;
 
 /**
  * 	The Class Characters keeps track of the mapping of all characters 
@@ -73,7 +74,7 @@ public class Characters {
 			case '/':
 				array = new Array7x7(SLASH_FWD);
 				break;
-			case '\\': //Behövs en extra för att undvika escape
+			case '\\': //An extra backslash is needed to avoid escape
 				array = new Array7x7(SLASH_BWD);
 				break;
 			case '\'':

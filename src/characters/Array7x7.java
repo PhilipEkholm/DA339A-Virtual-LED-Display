@@ -1,5 +1,6 @@
-package array7;
-import arrays.ArraySupporter2D;
+package characters;
+import java.util.Arrays;
+
 import characters.Characters;
 import exceptions.IllegalBitException;
 
@@ -21,7 +22,7 @@ public class Array7x7 {
 	*/
 	
 	public Array7x7(int[][] character){
-		this.representation = ArraySupporter2D.copy(character);
+		this.representation = Array7x7.copy2D(character);
 	}
 	
 	/**
@@ -30,7 +31,7 @@ public class Array7x7 {
 	*/
 	
 	public Array7x7(){
-		this.representation = ArraySupporter2D.copy(Characters.UNKNOWN);
+		this.representation = Array7x7.copy2D(Characters.UNKNOWN);
 	}
 	
 	/**
@@ -145,7 +146,7 @@ public class Array7x7 {
 	 */
 	
 	public int[][] getRepresentation(){
-		return ArraySupporter2D.copy(this.representation);
+		return Array7x7.copy2D(this.representation);
 	}
 	
 	/**
@@ -251,7 +252,20 @@ public class Array7x7 {
 		
 		return res;
 	}
+	
+	public static int[][] copy2D(int[][] array){
+		int[][] newArray = new int[array.length][array[0].length];
+		
+		for(int i = 0; i < array.length; i++){
+			for(int j = 0; j < array[0].length; j++){
+				newArray[i][j] = array[i][j];
+			}
+		}
+		
+		return newArray;
+	}
 }
+
 
 
 
