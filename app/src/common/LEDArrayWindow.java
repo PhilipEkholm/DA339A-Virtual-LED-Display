@@ -32,7 +32,7 @@ public class LEDArrayWindow extends JPanel implements ActionListener{
 						btnAbort = new JButton("Avbryt");
 	private JTextField 	fieldInput = new JTextField();
 	private JSlider sliderFreq = new JSlider(1, 20);
-	private JComboBox comboBoxColor = new JComboBox(new String[] {
+	private JComboBox<String> comboBoxColor = new JComboBox<String>(new String[] {
 		"Svart",
 		"Grå",
 		"Vit",
