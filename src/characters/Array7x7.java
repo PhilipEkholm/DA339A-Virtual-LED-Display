@@ -1,5 +1,4 @@
 package characters;
-import java.util.Arrays;
 
 import characters.Characters;
 import exceptions.IllegalBitException;
