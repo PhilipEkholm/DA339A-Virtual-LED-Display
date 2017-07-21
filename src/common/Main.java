@@ -1,7 +1,6 @@
 package common;
 
-import controllers.PxDisplayController;
-import controllers.PxInputController;
+import controllers.PXDisplayController;
 
 /**
  * Runs the test environments and the finished program
@@ -11,7 +10,6 @@ import controllers.PxInputController;
 
 public class Main {
 	public static void main(String[] args) {
-		new PxDisplayController();
-		new PxInputController();
+		new PXDisplayController();
 	}
 }

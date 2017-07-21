@@ -9,10 +9,12 @@ import javax.swing.JFrame;
 import characters.Array7;
 import characters.Array7x7;
 import characters.Characters;
-import views.PxDisplayView;
+import views.PXDisplayView;
+import views.PXInputView;
 
-public class PxDisplayController {
-	private PxDisplayView view;
+public class PXDisplayController {
+	private PXDisplayView dView;
+	private PXInputView iView;
 	private String stringToPrint = "";
 	private int characterColor,
 				printingFrequency;
@@ -27,26 +29,39 @@ public class PxDisplayController {
 	 * Construct a controller which can make changes in a window
 	 */
 	
-	public PxDisplayController(){
-		this.view = new PxDisplayView();
+	public PXDisplayController(){
+		this.dView = new PXDisplayView();
+		this.iView = new PXInputView(this);
 		this.characterColor = android.Color.BLACK;
 		this.programRunning = false;
 		this.printingFrequency = 5; //Max 50Hz
 		this.displayLength = 5;
 		this.representation = new int[this.displayLength][7][7];
 		
-		this.setupJFrame();
+		this.setupDisplayFrame();
+		this.setupInputFrame();
 	}
 	
-	private void setupJFrame(){
-		JFrame frameView = new JFrame("LED Array");
-		frameView.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//To avoid closing the whole program
-		frameView.setLocation(300, 70);
-		frameView.setResizable(true);
+	private void setupDisplayFrame(){
+		JFrame frame = new JFrame("Display");
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);//To avoid closing the whole program
+		frame.setLocation(300, 70);
+		frame.setResizable(true);
 		
-		frameView.add(view);
-		frameView.pack();
-		frameView.setVisible(true);
+		frame.add(dView);
+		frame.pack();
+		frame.setVisible(true);
+	}
+	
+	private void setupInputFrame(){
+		JFrame frame = new JFrame("Inputs");
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frame.setLocation(40, 70);
+		frame.setResizable(true);
+		
+		frame.add(iView);
+		frame.pack();
+		frame.setVisible(true);
 	}
 	
 	/**
@@ -101,14 +116,14 @@ public class PxDisplayController {
 		if(!this.programRunning){
 			t.scheduleAtFixedRate(new TimerTask(){
 				public void run(){
-					PxDisplayController ref = PxDisplayController.this; //Instance to the outer class, the key to solving the reference problem!
+					PXDisplayController ref = PXDisplayController.this; //Instance to the outer class, the key to solving the reference problem!
 					
 					ref.runningCounter--;
 					
 					ref.shiftCharacters();
 					ref.copyCurrentCharsToRepresentation();
 						
-					ref.view.writeToDisplay(ref.representation);
+					ref.dView.writeToDisplay(ref.representation);
 					
 					if(ref.runningCounter <= 0 || !ref.programRunning){
 						ref.programRunning = false;
@@ -125,7 +140,7 @@ public class PxDisplayController {
 	 * Clears the display
 	 */
 	public void clearDisplay(){
-		this.view.clearDisplay();
+		this.dView.clearDisplay();
 	}
 	
 	/**
@@ -185,6 +200,22 @@ public class PxDisplayController {
 			default:
 				this.characterColor = android.Color.argb(opacity, Color.BLACK.getRed(), Color.BLACK.getGreen(), Color.BLACK.getBlue());
 		}
+	}
+	
+	/**
+	 * Sets the speed which the characters moves
+	 * @param printingFrequency which the characters will move by (inverse of period time)
+	 */
+	public void setPrintingFrequency(int printingFrequency) {
+		this.printingFrequency = printingFrequency;
+	}
+	
+	/**
+	 * Starts/stops the program
+	 * @param programRunning global boolean regulated in system
+	 */
+	public void setProgramRunning(boolean programRunning) {
+		this.programRunning = programRunning;
 	}
 
 }
